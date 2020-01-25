@@ -15,5 +15,10 @@ describe('characters model', () => {
         const res = await charModel.findBy({ name: 'Kenny' }).first();
         expect(res).toEqual({ id: 2, name: "Kenny" })
     })
+
+    test('findById', async () => {
+        const res = await charModel.findById(1);
+        expect(res.name).toMatch(/cartman/i);
+    })
 })
 
