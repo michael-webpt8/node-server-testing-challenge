@@ -20,5 +20,17 @@ describe('characters model', () => {
         const res = await charModel.findById(1);
         expect(res.name).toMatch(/cartman/i);
     })
+
+    test('insert', async () => {
+        await charModel.insert({ name: 'ernie' });
+        const characters = await charModel.list();
+        expect(characters).toHaveLength(5);
+    })
+
+    test('update', async () => {
+        await charModel.update(1, { name: 'Stan' });
+        const stan = await charModel.findById(1);
+        expect(stan.name).toMatch(/stan/i);
+    })
 })
 

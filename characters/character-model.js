@@ -3,7 +3,9 @@ const db = require('../data/config');
 module.exports = {
     list,
     findBy,
-    findById
+    findById,
+    insert,
+    update
 }
 
 function list() {
@@ -19,4 +21,16 @@ function findById(id) {
         .where({ id })
         .select()
         .first();
+}
+
+async function insert(data) {
+    const [id] = await db('characters').insert(data);
+
+    return findById(id);
+}
+
+async function update(id, data) {
+    await db('characters').where({ id }).update(data);
+
+    return findById(id);
 }
