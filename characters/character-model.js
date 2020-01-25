@@ -1,9 +1,14 @@
 const db = require('../data/config');
 
 module.exports = {
-    list
+    list,
+    findBy
 }
 
 function list() {
-    return null
+    return db('characters').select()
+}
+
+function findBy(filter) {
+    return db('characters').where(filter);
 }
