@@ -1,8 +1,11 @@
 
-exports.up = function(knex) {
-  
+exports.up = async function (knex) {
+    await knex.schema.createTable('characters', tbl => {
+        tbl.increments('id');
+        tbl.string('name', 100).unique().notNullable()
+    })
 };
 
-exports.down = function(knex) {
-  
+exports.down = async function (knex) {
+    await knex.schema.dropTablesIfExist('characters');
 };
