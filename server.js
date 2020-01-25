@@ -1,7 +1,10 @@
 const express = require('express');
 const server = express();
+const authRouter = require('./characters/characters-router');
 
 server.use(express.json());
+
+server.use('/api', authRouter);
 
 server.get('/', (req, res) => {
   res.status(200).json({
