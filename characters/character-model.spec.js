@@ -32,5 +32,11 @@ describe('characters model', () => {
         const stan = await charModel.findById(1);
         expect(stan.name).toMatch(/stan/i);
     })
+
+    test('remove', async () => {
+        await charModel.remove(1);
+        const names = await charModel.list();
+        expect(names).toHaveLength(3);
+    })
 })
 

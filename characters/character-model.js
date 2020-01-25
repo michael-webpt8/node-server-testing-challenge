@@ -5,7 +5,8 @@ module.exports = {
     findBy,
     findById,
     insert,
-    update
+    update,
+    remove
 }
 
 function list() {
@@ -34,3 +35,7 @@ async function update(id, data) {
 
     return findById(id);
 }
+
+function remove(id) {
+    return db('characters').where({ id }).del();
+} 
