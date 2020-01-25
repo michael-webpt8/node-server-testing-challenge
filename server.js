@@ -1,6 +1,6 @@
 const express = require('express');
 const server = express();
-const authRouter = require('./characters/characters-router');
+const authRouter = require('./characters/character-router');
 
 server.use(express.json());
 
