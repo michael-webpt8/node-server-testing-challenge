@@ -15,7 +15,7 @@ router.get('/characters', async (req, res, next) => {
   }
 });
 
-router.post('/api/characters', async (req, res, next) => {
+router.post('/characters', async (req, res, next) => {
   if (!req.body.name) {
     res.status(400).json({ message: 'name required' });
   }
@@ -23,7 +23,7 @@ router.post('/api/characters', async (req, res, next) => {
     name: req.body.name,
   };
   try {
-    const name = await char.charModel.insert(newName);
+    const name = await charModel.insert(newName);
     res.status(201).json(name);
   } catch (err) {
     next(err);
